@@ -1,0 +1,20 @@
+<div class="navbar">
+  <div class="container">
+    <%= form_tag(users_path, :method => "get", id: "search_form") do %>
+      <table>
+        <tr>
+          <th>
+            <%= text_field_tag :search, params[:search], placeholder: "Find Packages" %>
+          </th>
+
+          <th>
+            <%= submit_tag "Search", :name => nil %>
+          </th>
+        </td>
+      </table>
+    <% end %>
+  </div>
+</div>
+
+
+

@@ -1,0 +1,15 @@
+    <%= form_for(@package) do |f| %>
+      <%= render 'packages/error_messages' %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+
+      <%= f.label :link %>
+      <%= f.text_field :link %>
+
+      <%= f.label :package_info %>
+      <%= f.text_field :package_info %>
+
+      <%= f.submit "Add Package", class: "btn btn-primary" %>
+    <% end %>
+

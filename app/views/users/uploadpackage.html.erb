@@ -1,0 +1,22 @@
+<% provide(:title, "Upload package") %>
+<h1>Update a Package</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@user) do |f| %>
+      <%= render 'shared/error_messages' %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
+
+      <%= f.label :link %>
+      <%= f.text_field :link, class: 'form-control' %>
+
+      <%= f.label :package_info %>
+      <%= f.text_field :package_info, class: 'form-control' %>
+
+      <%= f.submit "Upload Package", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+
