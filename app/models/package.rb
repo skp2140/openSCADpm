@@ -1,4 +1,6 @@
 class Package < ApplicationRecord
+  extend FriendlyId
+  friendly_id :name, use: [:slugged, :finders]
   before_save { self.link = link.downcase }
   validates :name, presence: true, length: { maximum: 50 },
                    uniqueness: { case_sensitive: false }
