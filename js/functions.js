@@ -41,7 +41,13 @@
          window.location.href = pack_name;
       });
       $('#hit2').click(function() {
-         alert($('#search2').val());
+         var search_url = "https://github.com/search?utf8=✓&q=topic%3A";
+         var pack_name = $('#search2').val();
+         pack_name = pack_name.split(' ').join('+topic%3A');
+         pack_name = search_url.concat(pack_name);
+         pack_name = pack_name.concat("&type=Repositories");
+         window.location.href = pack_name;          
+
       });
       setTimeout(function () {
          $('body').addClass('dom-ready');
