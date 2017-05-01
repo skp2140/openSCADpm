@@ -29,11 +29,21 @@
          }
       }
    });
+      
 
    // Fade In Page
    $(document).ready(function () {
+      $('#hit1').click(function() {
+         alert($('#search1').val());
+      });
+      $('#hit2').click(function() {
+         alert($('#search2').val());
+      });
       setTimeout(function () {
          $('body').addClass('dom-ready');
       }, 300);
    });
 })(jQuery);
+
+
+
