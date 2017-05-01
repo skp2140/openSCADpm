@@ -2490,8 +2490,22 @@ textarea:focus {
   border-bottom-left-radius: 0 !important;
 }
 
+.destinations-form .form-submit-2 {
+  position: absolute;
+  right: 0;
+  top: 10;
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+
 @media (max-width: 768px) {
   .destinations-form .form-submit {
+    padding: 0 15px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .destinations-form .form-submit-2 {
     padding: 0 15px !important;
   }
 }
