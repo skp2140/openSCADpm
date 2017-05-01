@@ -2801,6 +2801,17 @@ textarea:focus {
 }
 
 /* ----- Statistics ----- */
+
+.hero-text p {
+  letter-spacing: 0.04em;
+  line-height: 1em;
+  font-size: 30px;
+  margin: 25px 0 100px;
+  text-transform: uppercase;
+  line-height: 1em;
+  color: yellowgreen;
+}
+
 .statistics-box {
   display: flex;
   padding: 30px 10px;
@@ -2824,11 +2835,16 @@ textarea:focus {
   display: block;
   font-weight: 700;
   line-height: 1em;
-  color: #343434;
+  color: yellowgreen;
   font-size: 30px;
   letter-spacing: 0.04em;
   margin: 0 0 12.5px;
 }
+
+.statistics-box .statistics-item span a:hover {
+  color: darkgreen;
+}
+
 .statistics-box .statistics-item .title {
   margin: 0;
   font-size: 18px;
