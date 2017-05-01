@@ -2788,6 +2788,12 @@ textarea:focus {
   line-height: 1em;
   color: yellowgreen;
 }
+
+.hero-box .hero-text p a:hover {
+  color: darkgreen;
+}
+
+
 .hero-box .hero-text h1 {
   font-family: "Raleway", sans-serif;
   letter-spacing: 0.08em;
