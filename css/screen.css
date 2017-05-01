@@ -2703,7 +2703,7 @@ textarea:focus {
   line-height: 1.2em;
 }
 .main-footer .widget ul:not(.social-block) li a:hover {
-  color: #e7434e;
+  color: lightgreen;
 }
 .main-footer .widget ul:not(.social-block) li:not(:last-of-type) {
   margin-bottom: 12.5px;
