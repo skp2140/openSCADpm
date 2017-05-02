@@ -3302,3 +3302,7 @@ article {
     text-align: justify;
     color: darkgreen;
 }
+
+article a:hover {
+  color: darkseagreen;
+}
