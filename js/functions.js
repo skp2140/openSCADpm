@@ -32,7 +32,9 @@
     
    // Fade In Page
    $(document).ready(function () {
+  
       $('#hit1').click(function() {
+          
          var search_url = "https://github.com/search?utf8=✓&q=ospm+";
          var pack_name = $('#search1').val();
          pack_name = pack_name.split(' ').join('+');
@@ -40,6 +42,7 @@
          pack_name = pack_name.concat("&ref=simplesearch");
          window.location.href = pack_name;
       });
+       
       $('#hit2').click(function() {
          var search_url = "https://github.com/search?utf8=✓&q=topic%3A";
          var pack_name = $('#search2').val();
@@ -49,6 +52,7 @@
          window.location.href = pack_name;          
 
       });
+
       setTimeout(function () {
          $('body').addClass('dom-ready');
       }, 300);

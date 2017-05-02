@@ -2783,14 +2783,15 @@ textarea:focus {
   padding: 300px 0;
 }
 .hero-box .hero-text h1,
-.hero-box .hero-text p {
+.hero-box .hero-text p,
+.hero-box .hero-text h3{
   text-transform: uppercase;
   line-height: 1em;
-  color: yellowgreen;
+  color: darkgreen;
 }
 
 .hero-box .hero-text p a:hover {
-  color: darkgreen;
+  color: darkolivegreen;
 }
 
 
@@ -2808,6 +2809,14 @@ textarea:focus {
   font-size: 30px;
   margin: 0 0 80px;
 }
+
+.hero-box .hero-text h3 {
+  letter-spacing: 0.04em;
+  line-height: 1em;
+  font-size: 30px;
+  margin: 45px 0 30px;
+}
+
 @media (max-width: 768px) {
   .hero-box {
     padding: 200px 0;
@@ -3244,4 +3253,25 @@ textarea:focus {
 }
 .social-block li i:hover.icon-google-plus {
   background: #dd4b39;
+}
+
+/*------------------------Table-------*/
+table, th, td {
+    border: 1px solid darkgreen;
+    color: darkgreen;
+    border-collapse: collapse;
+    text-transform: uppercase;
+    line-height: 1em;
+}
+th {
+    padding: 5px;
+    text-align: center;
+}
+td {
+    padding: 5px;
+    text-align: center;
+}
+table#t01 {
+    width: 100%;    
+    background-color: yellowgreen;
 }
