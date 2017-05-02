@@ -3274,19 +3274,19 @@ td {
 }
 table#t01 {
     width: 100%;    
-    background-color: yellowgreen;
+    background-color: white;
 }
 
 
 div.container2 {
     width: 100%;
-    background-color: lightgreen;
+    background-color: white;
     border: 1px solid darkgreen;
 }
 
 .container2 header, .container2 footer {
     padding: 1em;
-    color: lightgreen;
+    color: white;
     background-color: forestgreen;
     clear: left;
     text-align: center;
@@ -3304,7 +3304,7 @@ article {
 }
 
 article a:hover {
-  color: darkseagreen;
+  color: lightgreen;
 }
 
 .accordion {
@@ -3330,7 +3330,7 @@ article a:hover {
 .accordion dt a:hover,
 .accordion dd a:hover {
   display: block;
-  color: darkolivegreen;
+  color: lightgreen;
   font-weight: bold;
 }
 
