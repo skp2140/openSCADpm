@@ -2685,9 +2685,9 @@ textarea:focus {
 
 /* ----------------- 9.2. Footer ----------------- */
 .main-footer {
-  background-image: url(../img/footer-pattern.png);
+  
   background-repeat: repeat-x;
-  background-color: #404040;
+  background-color: darkgreen;
   padding: 60px 0;
 }
 @media (max-width: 768px) {
@@ -2839,7 +2839,7 @@ textarea:focus {
   margin: 25px 0 100px;
   text-transform: uppercase;
   line-height: 1em;
-  color: yellowgreen;
+  color: darkgreen;
 }
 
 .statistics-box {
