@@ -3275,3 +3275,29 @@ table#t01 {
     width: 100%;    
     background-color: yellowgreen;
 }
+
+
+div.container2 {
+    width: 100%;
+    background-color: lightgreen;
+    border: 1px solid darkgreen;
+}
+
+.container2 header, .container2 footer {
+    padding: 1em;
+    color: lightgreen;
+    background-color: forestgreen;
+    clear: left;
+    text-align: center;
+}
+
+
+
+article {
+    margin-left: 0;
+    border-left: 1px solid gray;
+    padding: 1em;
+    overflow: hidden;
+    text-align: justify;
+    color: darkgreen;
+}
