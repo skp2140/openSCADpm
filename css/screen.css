@@ -2736,11 +2736,11 @@ textarea:focus {
 /* ----------------- 9.3. Sections ----------------- */
 /* -------- Section Title -------- */
 .section {
-  margin-bottom: 80px;
+  margin-bottom: 0px;
 }
 @media (max-width: 768px) {
   .section {
-    margin-bottom: 50px;
+    margin-bottom: 0px;
   }
 }
 
@@ -2846,6 +2846,7 @@ textarea:focus {
   display: flex;
   padding: 30px 10px;
   margin-top: -70px;
+  margin-bottom: 50px;
   width: 100%;
   align-items: center;
   justify-content: space-between;
