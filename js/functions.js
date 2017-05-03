@@ -33,15 +33,24 @@
    // Fade In Page
    $(document).ready(function () {
   
-      $('#hit1').click(function() {
-          
+      function searchName()
+      {
          var search_url = "https://github.com/search?utf8=✓&q=ospm+";
          var pack_name = $('#search1').val();
          pack_name = pack_name.split(' ').join('+');
          pack_name = search_url.concat(pack_name);
          pack_name = pack_name.concat("&ref=simplesearch");
-         window.location.href = pack_name;
+         window.location.href = pack_name;       
+      }
+      $('#hit1').click(function() {          
+         searchName();
       });
+       
+      $('#nameSearch').submit(function() {
+          event.preventDefault();
+          searchName();
+      });
+       
       function searchRepos()
       {
         var search_url = "https://github.com/search?utf8=✓&q=topic%3Aopenscad-pm+topic%3A";
