@@ -1,6 +1,6 @@
 # openSCADpm
 
-This is a package manager (like NPM or Ruby Gems) for the (OpenScad)[http://www.openscad.org/] Language
+This is a package manager (like NPM or Ruby Gems) for the [OpenScad](http://www.openscad.org/) Language
 
 ## Installation
 
