@@ -35,7 +35,8 @@ Thus we felt rather the revineting the wheel and bearing  the cost for a less re
 * Packages are found through GitHub.
   * GitHub has a great tag system and instead making authors do the work of adding tags in a website and on GitHub we opted to use strictly GitHub instead. 
   * The website for the package manager has links to common tags and a simplifying search feature for topic tags. The goal of these is to encourage tag usage by authors and to help consumers to search via these topical tags.
-* For the same reasons that openSCADpm packages are hosted on GitHub so is the actual tool (and also the website).
+* For the same reasons that openSCADpm packages are hosted on GitHub so is the actual tool 
+* Indeed given the free hosting features of GitHub the [website](https://skp2140.github.io/openSCADpm/) is also hosted by GitHub.
 
  
 
