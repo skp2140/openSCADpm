@@ -42,15 +42,23 @@
          pack_name = pack_name.concat("&ref=simplesearch");
          window.location.href = pack_name;
       });
-       
-      $('#hit2').click(function() {
-         var search_url = "https://github.com/search?utf8=✓&q=topic%3Aopenscad-pm+topic%3A";
+      function searchRepos()
+      {
+        var search_url = "https://github.com/search?utf8=✓&q=topic%3Aopenscad-pm+topic%3A";
          var pack_name = $('#search2').val();
          pack_name = pack_name.split(' ').join('+topic%3A');
          pack_name = search_url.concat(pack_name);
          pack_name = pack_name.concat("&type=Repositories");
-         window.location.href = pack_name;          
-
+         window.location.href = pack_name;
+      }
+      $('#hit2').click(function() {
+        searchRepos();
+ 
+      });
+       
+      $('#catSearch').submit(function() {
+          event.preventDefault();
+          searchRepos();
       });
 
 
