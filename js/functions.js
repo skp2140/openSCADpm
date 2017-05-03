@@ -46,7 +46,7 @@
          searchName();
       });
        
-      $('#nameSearch').submit(function() {
+      $('#nameSearch').submit(function(event) {
           event.preventDefault();
           searchName();
       });
@@ -72,7 +72,7 @@
  
       });
        
-      $('#catSearch').submit(function() {
+      $('#catSearch').submit(function(event) {
           event.preventDefault();
           searchRepos();
       });
