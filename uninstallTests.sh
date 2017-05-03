@@ -1,3 +1,4 @@
+#!/bin/bash
 list="installTestsList"
 packageWithDeps="brennangw ospm_hello 0.4"
 dirOfPackageWithDeps="brennangw-ospm_hello-0.4"
