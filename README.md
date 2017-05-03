@@ -8,6 +8,16 @@ https://skp2140.github.io/openSCADpm/
 
 TODO: Write a project description
 
+This is a package manager (like NPM or Ruby Gems) for the [OpenScad Language](http://www.openscad.org/).
+
+There are 3 supporting documents to explaining the project:
+
+1. Project Overview
+2. How openSCADpm works and why it works the way it does.
+3. 
+
+
+
 ## Installation
 
 TODO: Describe the installation process
