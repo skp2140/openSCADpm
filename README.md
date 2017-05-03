@@ -1,6 +1,6 @@
 # openSCADpm
 
-TODO: Write a project description
+This is a package manager (like NPM or Ruby Gems) for the (OpenScad)[http://www.openscad.org/] Language
 
 ## Installation
 
