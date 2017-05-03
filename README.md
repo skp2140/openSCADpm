@@ -16,7 +16,7 @@ The Installation section is just enough infor to get you up and running.
 Much more informaiton available in the Usage section and the documentation file we have in this repo.
 
 ## OpenSCADpm Installation
-** This version of OpenSCADpm is only for Macs **
+** This version of OpenSCADpm is only for Macs and Linux/Unix **
 
 1. Install the lastest version of OpenSCADpm by visiting the website below and click the "DOWNLOAD OPENSCADPM" link.
 
