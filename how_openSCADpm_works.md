@@ -6,3 +6,7 @@ openSCADpm provides the functionality of NPM for Node.js or Gems for Ruby. While
 1. How openSCADpm interacts with GitHub
 2. How openSCADpm interacts with the openSCAD library system.
 3. How openSCADpm interacts wtih with the user.
+
+## How openSCADpm interacts with GitHub
+## How openSCADpm interacts with the openSCAD library system.
+## How openSCADpm interacts wtih with the user.
