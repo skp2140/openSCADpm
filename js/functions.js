@@ -8,29 +8,8 @@
       setTimeout(function () {
          obj.removeClass('active');
       }, 1500);
-
-      // Load Boats
-      if (obj.hasClass('btn-load-boats')) {
-         if (!$('.load-boats-box').hasClass('open')) {
-            $('.load-boats-box').slideToggle(1000);
-            setTimeout (function () {
-               $('.load-boats-box').addClass('open');
-            }, 700);
-         }
-      }
-
-      // Load Boats
-      if (obj.hasClass('btn-load-destination')) {
-         if (!$('.load-destinations-box').hasClass('open')) {
-            $('.load-destinations-box').slideToggle(1000);
-            setTimeout (function () {
-               $('.load-destinations-box').addClass('open');
-            }, 700);
-         }
-      }
    });
-    
-   // Fade In Page
+  
    $(document).ready(function () {
   
       function searchName()
