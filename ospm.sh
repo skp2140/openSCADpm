@@ -112,6 +112,19 @@ function runinstall {
   fi
 }
 
+function removeRequiredBy {
+  requiredBy="requiredBy"
+  requiredByFile="$libLoc$slash$1-$2-$3$slash$requiredBy"
+  libLoc=$(cat /usr/local/lib/ospmLibSettings)
+  for d in $( ls -d $libLoc$slash*/ ) ; do
+      thisPackage="$1 $2 $3"
+      # echo $thisPackage
+      if [[ -f "$echo($d$requiredBy)" ]]; then
+        grep -vwE $thisPackage $d$requiredBy > $d$requiredBy
+      fi
+  done
+}
+
 function uninstall {
 	libLoc=$(cat /usr/local/lib/ospmLibSettings)
 	packageDir="$1-$2-$3"
@@ -121,10 +134,9 @@ function uninstall {
 		#if so it is an easy stop (show all for ease) with little processing
 
 		beingUsed=false
-		echo "dollar four is $4"
 		if [[ $4 != "force" ]]; then
-			for d in $( ls -d $libLoc$slash*/ ) ; do #this wont work :(
-				if grep -Fxq "$1 $2 $3" $d$deps
+			for d in $( ls -d $libLoc$slash*/ ) ; do
+        if grep -Fxq "$1 $2 $3" $d$deps
 				then
 					echo "$1 $2 $3 is being used in $d"
 					beingUsed=true
@@ -137,14 +149,20 @@ function uninstall {
 			echo -n "Proceed with uninstall (y/n)? "
 				read answer
 				if echo "$answer" | grep -iq "^y" ; then
+            removeRequiredBy $1 $2 $3
 				    rm -rf $libLoc$slash$packageDir
 				else
 				    echo "Ok, won't uninstall then."
 				fi
-		fi
+    else
+      removeRequiredBy $1 $2 $3
+      rm -rf $libLoc$slash$packageDir
+    fi
 
 	fi
 }
+
+
 
 function parse {
   regex="\s*include <([A-Za-z0-9_]+)-([A-Za-z0-9_]+)-([A-Za-z0-9_\.]+)"
@@ -187,7 +205,6 @@ function install {
 			deps=$(echo dependencies)
 			underscore_ospm=$(echo "_ospm")
 			saveLoc=$libLoc$slash$1-$2-$3
-			echo $saveLoc
 			if [ ! -d "$saveLoc" ]; then
 				git clone -b $3  --single-branch --depth 1 https://github.com/$1/$2 $saveLoc
 				# git clone https://github.com/$1/$2.git $saveLoc
@@ -199,7 +216,6 @@ function install {
         echo "required by! $4-$5-$6"
 				requiredBy="requiredBy"
 				requiredByFile=$libLoc$slash$1-$2-$3$slash$requiredBy
-        echo $requiredByFile
 				if [ ! -z "$4" ] && [ ! -z "$5" ] && [ ! -z "$6" ] && ( ! grep -Fxq "$4 $5 $6" $requiredByFile ); then
            echo "$4 $5 $6" >> $requiredByFile
 				fi
