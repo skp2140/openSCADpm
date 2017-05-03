@@ -39,18 +39,19 @@ function library {
 }
 
 function help {
-        printf "${YELLOW}Key: <> is required, | stands for or, [] is optional, capitols for literals, lowercase for variabls${NC}"
+        printf "${YELLOW}Key: <variable> ${NC}"
         printf "${YELLOW}Usage: ospm [version] [help] [library <> <>] ... \n${NC}"
-        printf "${YELLOW}version                                        Show version\n${NC}"
-        printf "${YELLOW}help                                           Show command line options\n${NC}"
-        printf "${YELLOW}library <SAVE> <path>                          Save library path\n${NC}"
-        printf "${YELLOW}library <SHOW>                                 Show library path\n${NC}"
-        printf "${YELLOW}install <author> <package name> <version>      Install package(s)\n${NC}"
-        printf "${YELLOW}install <LIST> <path>                          Install package(s)\n${NC}"
-        printf "${YELLOW}uninstall <author> <package name> <version>    Uninstall package(s)\n${NC}"
-        printf "${YELLOW}parse <INSTALL> <input>                        Install package(s) in a file\n${NC}"
-        printf "${YELLOW}parse <SAVE> <input> <output>                  Save used packages in a file to a list\n${NC}"
-        printf "${YELLOW}clean                                          remove unrequired package(s)\n${NC}"
+        printf "${YELLOW}version                                            Show version\n${NC}"
+        printf "${YELLOW}help                                               Show command line options\n${NC}"
+        printf "${YELLOW}library save <path>                                Save library path\n${NC}"
+        printf "${YELLOW}library show                                       Show library path\n${NC}"
+        printf "${YELLOW}install <author> <package name> <version>          Install package(s)\n${NC}"
+        printf "${YELLOW}install list <path>                                Install package(s)\n${NC}"
+        printf "${YELLOW}uninstall <author> <package name> <version>        Uninstall package(s)\n${NC}"
+        printf "${YELLOW}uninstall <author> <package name> <version> force  Uninstall package(s)\n${NC}"
+        printf "${YELLOW}parse install <input>                              Install package(s) in a file\n${NC}"
+        printf "${YELLOW}parse save <input> <output>                        Save used packages in a file to a list\n${NC}"
+        printf "${YELLOW}clean                                              Remove unrequired package(s)\n${NC}"
         printf "${YELLOW}For more information go to: skp2140.github.io/openSCADpm/\n${NC}"
 }
 
