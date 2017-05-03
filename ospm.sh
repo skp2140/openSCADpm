@@ -71,44 +71,29 @@ function help_more {
 	fi
 }
 
-function save {
+
+function clean {
   libLoc=$(cat /usr/local/lib/ospmLibSettings)
-  $saved="saved_ospm_modules"
-  "$1 $2 $3" >> $libLoc$slash$saved
-}
+  requiredBy="requiredBy"
+  if [ $libLoc != "/" ]; then
+    for di in $( ls -d $libLoc$slash*/ ) ; do
+      IFS='-' read -ra dirPackage <<< "$di"
+      if [ ${#dirPackage[@]} == 3 ]; then
+        frb="$echo($di$requiredBy)"
+        if [[ ! -f $frb ]]; then
+          echo -n "Uninstall $di (y/n)? "
+    				read answer
+            if echo "$answer" | grep -iq "^y" ; then
+                removeRequiredBy "${dirPackage[0]} ${dirPackage[1]} ${dirPackage[2]}"
+                # echo "would delete! $di"
+                rm -rf "$di"
+    				else
+    				    echo "Ok, won't uninstall then."
+    				fi
+          fi
+      fi
 
-function unsave {
-  libLoc=$(cat /usr/local/lib/ospmLibSettings)
-  $saved="saved_ospm_modules"
-
-
-}
-
-function runinstall {
-  libLoc=$(cat /usr/local/lib/ospmLibSettings)
-	packageDir="$1-$2-$3"
-	#some safety
-	if [ ! -z $libLoc ] && [ "$libLoc" != "/" ] && [ ! -z $1 ] && [ ! -z $2 ] && [ ! -z $3 ]; then
-		#for each package check if the target package is a requirement
-		#if so it is an easy stop (show all for ease) with little processing
-
-		beingUsed=false
-		echo "dollar four is $4"
-		if [[ $4 != "force" ]]; then
-			for d in $( ls -d $libLoc$slash*/ ) ; do #this wont work :(
-				if grep -Fxq "$1 $2 $3" $d$deps
-				then
-					echo "$1 $2 $3 is being used in $d"
-					beingUsed=true
-				fi
-			done
-		fi
-
-		if [[ $beingUsed = true ]]; then
-	     echo "cannot unistall $1 $2 $3 as it is being used."
-    else
-      echo "asdf"
-		fi
+    done
   fi
 }
 
@@ -118,9 +103,15 @@ function removeRequiredBy {
   libLoc=$(cat /usr/local/lib/ospmLibSettings)
   for d in $( ls -d $libLoc$slash*/ ) ; do
       thisPackage="$1 $2 $3"
+      frb="$echo($d$requiredBy)"
       # echo $thisPackage
-      if [[ -f "$echo($d$requiredBy)" ]]; then
+      if [[ -f $frb ]]; then
         grep -vwE $thisPackage $d$requiredBy > $d$requiredBy
+        #check if requiredby is empty
+        fileOut=$(cat $frb)
+        if [[ -z "${fileOut// }" ]]; then
+          rm $frb
+        fi
       fi
   done
 }
@@ -213,12 +204,13 @@ function install {
 			fi
 
 				#required by file
-        echo "required by! $4-$5-$6"
 				requiredBy="requiredBy"
 				requiredByFile=$libLoc$slash$1-$2-$3$slash$requiredBy
 				if [ ! -z "$4" ] && [ ! -z "$5" ] && [ ! -z "$6" ] && ( ! grep -Fxq "$4 $5 $6" $requiredByFile ); then
            echo "$4 $5 $6" >> $requiredByFile
-				fi
+        else
+          touch $requiredByFile
+        fi
 
 				if [ -f "$saveLoc$slash$deps" ]; then
 					while read -r dep; do
@@ -227,7 +219,6 @@ function install {
 						if [ ! -z "$dep" ] && [ "$dep" != "\n" ]; then
 
               depArr=($dep)
-              echo "install dep $dep for $1 $2 $3"
               a="${dep[0]}"
               b="${dep[1]}"
               c="${dep[2]}"
@@ -261,6 +252,9 @@ case "$1" in
     "parse" )
         parse $2 $3 $4
         ;;
+    "clean" )
+      clean
+      ;;
     "help" )
                 help
                 ;;
