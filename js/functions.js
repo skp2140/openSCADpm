@@ -53,10 +53,17 @@
        
       function searchRepos()
       {
-        var search_url = "https://github.com/search?utf8=✓&q=topic%3Aopenscad-pm+topic%3A";
+         var search_url = "https://github.com/search?utf8=✓&q=topic%3Aopenscad-pm";
          var pack_name = $('#search2').val();
-         pack_name = pack_name.split(' ').join('+topic%3A');
-         pack_name = search_url.concat(pack_name);
+          
+         if (pack_name)
+         {      
+             search_url = search_url.concat("+topic%3A");  
+             pack_name = pack_name.split(' ').join('+topic%3A');   
+             pack_name = search_url.concat(pack_name);
+         }
+         else
+            pack_name = search_url;
          pack_name = pack_name.concat("&type=Repositories");
          window.location.href = pack_name;
       }
