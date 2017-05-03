@@ -44,74 +44,93 @@ Script Approach and Package Name Approach.
 You can create a user script (txt file recommended) that contains the dependencies of packages for 
 OpenSCAD packages. 
 
-```sh
-ospm install list myList.txt
-```
-
+You can read the content of that txt file by th command below.
 ```sh
 cat myList.txt
 ```
-
+In the txt file, each row should provide the information for the needed package. The first element 
+should be the author name, the second element should be the package name, and the last element 
+should be the package version number. Furthermore, in this example, since ospm_hello depends on 
+echo function, so the information for ospm_hello is one row above the information for echo. 
 
 ```sh
+<author name> <package name> <package version number>
 brennangw ospm_hello 0.4
 brennangw echo 0.1
 ```
 
+Once you have the user script ready, type the following command in the terminal, inside the folder
+that contains the myList.txt.
 
-User script example - myList.txt: 
 ```sh
-User script sample content
+ospm install list myList.txt
 ```
+
+This command will help you to download what's specified in txt file. 
+
 
 ### Package Name Approach
 
+You can also download package by using the command below.
 ```sh
+ospm install <author name> <package name> <package version number>
 ospm install brennangw ospm_hello 0.4
 ```
+This sample command will install ospm_hello v0.4 in your computer. 
 
 
 ### More Commands
 
-uninstall
+Uninstall
 ```sh
-ospm install brennangw ospm_hello 0.4
+ospm uninstall <author name> <package name> <package version number>
+ospm uninstall brennangw ospm_hello 0.4
 ```
+The command above will allow you to uninstall the package you do not want. 
 
-library
+
+Library
 ```sh
-ospm install brennangw ospm_hello 0.4
+ospm library <show>
+ospm library <save> <path>
 ```
+"ospm library show" shows library path, while "ospm library save <path>" save the library path.
 
-version
+
+Version
 ```sh
-ospm install brennangw ospm_hello 0.4
+ospm version
 ```
+This command shows the version information about the ospm installed in the system. 
 
-help
+Help
 ```sh
-ospm install brennangw ospm_hello 0.4
+ospm help
 ```
-
+This command shows command line options, the corresponding explanations and usages. 
 
 
 
 ## Contributing
+If you would like to contrbute to this ospm, 
 
 1. Fork it!
-2. Create your feature branch: `git checkout -b my-new-feature`
-3. Commit your changes: `git commit -am 'Add some feature'`
-4. Push to the branch: `git push origin my-new-feature`
+2. Create your feature branch: 
+`git checkout -b my-new-feature`
+3. Commit your changes: 
+`git commit -am 'Add some feature'`
+4. Push to the branch: 
+`git push origin my-new-feature`
 5. Submit a pull request :D
 
-## History
-
-TODO: Write history
 
 ## Credits
 
-TODO: Write credits
+Thank for all the hardwork we have done in the TSE Team, which include Jiaxin Su, Brennan Wallace,
+and Stan Pecency. Also, thank Prof. Kaiser from Columbia University provided us with precious suggestions about 
+how to better develop this package manager tool for OpenSCAD.
+
 
 ## License
 MIT Open Source License. 
-Attached 
+Attached in this GITHUB repo. 
