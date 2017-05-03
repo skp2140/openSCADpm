@@ -36,11 +36,18 @@ Thus we felt rather the revineting the wheel and bearing  the cost for a less re
   * GitHub has a great tag system and instead making authors do the work of adding tags in a website and on GitHub we opted to use strictly GitHub instead. 
   * The website for the package manager has links to common tags and a simplifying search feature for topic tags. The goal of these is to encourage tag usage by authors and to help consumers to search via these topical tags.
 * For the same reasons that openSCADpm packages are hosted on GitHub so is the actual tool 
-* Indeed given the free hosting features of GitHub the [website](https://skp2140.github.io/openSCADpm/) is also hosted by GitHub.
+* Indeed given the free hosting features of GitHub the [website](https://skp2140.github.io/openSCADpm/) is also hosted by GitHub. 
 
+## Interaction with the user and and thier local enviorment.
+
+The CLI of openSCADpm is buit in Bash 3. There were three main reasons for doing this:
+
+* Portablity.
+* Limited dependices.
+  * Compared to requiring the user to have a particular programming language and pacakges for that language installed.
+* Fast(er) development time.
+  * Bash's main purpose if file-system manipulation and that fits the needs of openSCADpm.
  
-
-## Interaction withh with the user and and thier local enviorment.
 
 ## Interactions with the openSCAD library system.
 
