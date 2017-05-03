@@ -51,6 +51,7 @@ function help {
         printf "${YELLOW}parse <INSTALL> <input>                        Install package(s) in a file\n${NC}"
         printf "${YELLOW}parse <SAVE> <input> <output>                  Save used packages in a file to a list\n${NC}"
         printf "${YELLOW}clean                                          remove unrequired package(s)\n${NC}"
+        printf "${YELLOW}For more information go to: skp2140.github.io/openSCADpm/\n${NC}"
 }
 
 function help_more {
