@@ -31,28 +31,27 @@ function library {
 	elif [[ "$1" == "clean" ]]; then
 		cat /usr/local/lib/ospmLibSettings
 	else
-		printf "${YELLOW}Module library is:\n${NC}"
 		output=$(cat /usr/local/lib/ospmLibSettings)
-		printf "${YELLOW}$output\n${NC}"
+		printf "${GREEN}$output\n${NC}"
 	fi
 
 }
 
 function help {
-        printf "${YELLOW}Key: <variable> ${NC}"
-        printf "${YELLOW}Usage: ospm [version] [help] [library <> <>] ... \n${NC}"
-        printf "${YELLOW}version                                            Show version\n${NC}"
-        printf "${YELLOW}help                                               Show command line options\n${NC}"
-        printf "${YELLOW}library save <path>                                Save library path\n${NC}"
-        printf "${YELLOW}library show                                       Show library path\n${NC}"
-        printf "${YELLOW}install <author> <package name> <version>          Install package(s)\n${NC}"
-        printf "${YELLOW}install list <path>                                Install package(s)\n${NC}"
-        printf "${YELLOW}uninstall <author> <package name> <version>        Uninstall package(s)\n${NC}"
-        printf "${YELLOW}uninstall <author> <package name> <version> force  Uninstall package(s)\n${NC}"
-        printf "${YELLOW}parse install <input>                              Install package(s) in a file\n${NC}"
-        printf "${YELLOW}parse save <input> <output>                        Save used packages in a file to a list\n${NC}"
-        printf "${YELLOW}clean                                              Remove unrequired package(s)\n${NC}"
-        printf "${YELLOW}For more information go to: skp2140.github.io/openSCADpm/\n${NC}"
+        printf "${GREEN}Key: <variable> ${NC}"
+        printf "${GREEN}Usage: ospm [version] [help] [library <> <>] ... \n${NC}"
+        printf "${GREEN}version                                            Show version\n${NC}"
+        printf "${GREEN}help                                               Show command line options\n${NC}"
+        printf "${GREEN}library save <path>                                Save library path\n${NC}"
+        printf "${GREEN}library show                                       Show library path\n${NC}"
+        printf "${GREEN}install <author> <package name> <version>          Install package(s)\n${NC}"
+        printf "${GREEN}install list <path>                                Install package(s)\n${NC}"
+        printf "${GREEN}uninstall <author> <package name> <version>        Uninstall package(s)\n${NC}"
+        printf "${GREEN}uninstall <author> <package name> <version> force  Uninstall package(s)\n${NC}"
+        printf "${GREEN}parse install <input>                              Install package(s) in a file\n${NC}"
+        printf "${GREEN}parse save <input> <output>                        Save used packages in a file to a list\n${NC}"
+        printf "${GREEN}clean                                              Remove unrequired package(s)\n${NC}"
+        printf "${GREEN}For more information go to: skp2140.github.io/openSCADpm/\n${NC}"
 }
 
 function help_more {
@@ -136,11 +135,14 @@ function uninstall {
 		beingUsed=false
 		if [[ $4 != "force" ]]; then
 			for d in $( ls -d $libLoc$slash*/ ) ; do
-        if grep -Fxq "$1 $2 $3" $d$deps
-				then
-					echo "$1 $2 $3 is being used in $d"
-					beingUsed=true
-				fi
+        ddeps=$d$deps
+        if [[ -f $ddeps ]]; then
+          if grep -Fxq "$1 $2 $3" $d$deps
+  				then
+  					echo "$1 $2 $3 is being used in $d"
+  					beingUsed=true
+  				fi
+        fi
 			done
 
 		fi
@@ -152,7 +154,7 @@ function uninstall {
             removeRequiredBy $1 $2 $3
 				    rm -rf $libLoc$slash$packageDir
 				else
-				    echo "Ok, won't uninstall then."
+				    echo "Ok, will not uninstall then."
 				fi
     else
       removeRequiredBy $1 $2 $3
@@ -193,7 +195,7 @@ function install {
 		if [[ "$1" == "list" ]]; then
 			if [ -f "$2" ]; then
 				while read -r dep; do
-					printf "${YELLOW}$dep\n${NC}"
+					printf "${GREEN}Installing dependency: $dep\n${NC}"
 					dep_dir=$libLoc$slash$dep
 					if [ ! -z "$dep" ] && [ "$dep" != "\n" ]; then
 						source ospm.sh install $dep
@@ -209,7 +211,7 @@ function install {
 				git clone -b $3  --single-branch --depth 1 https://github.com/$1/$2 $saveLoc
 				# git clone https://github.com/$1/$2.git $saveLoc
 			else
-				printf "${GREEN}$1-$2-$3 already installed$\n${NC}"
+				printf "${GREEN}$1-$2-$3 already installed\n${NC}"
 			fi
 
 				#required by file
@@ -223,7 +225,6 @@ function install {
 
 				if [ -f "$saveLoc$slash$deps" ]; then
 					while read -r dep; do
-						printf "${YELLOW}$dep\n${NC}"
 						dep_dir=$libLoc$slash$dep
 						if [ ! -z "$dep" ] && [ "$dep" != "\n" ]; then
 
