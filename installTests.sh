@@ -100,10 +100,10 @@ if [ "$1" == help ]; then
   return
 else
   if [[ ! -z $1 ]]; then
-    source ospm.sh library save $1
+    source ospm library save $1
     libPath=$1
   else
-    libPath=$(source ospm.sh library clean)
+    libPath=$(source ospm library clean)
   fi
   slash=$(echo /)
   fullDirPathOfPackageWithoutDeps=$libPath$slash$dirOfPackageWithoutDeps
@@ -119,7 +119,7 @@ else
   setUpComplete
 
   testOperationsStarting
-  source ospm.sh install $packageWithoutDeps
+  source ospm install $packageWithoutDeps
   testOperationsComplete
 
   evaluationsStarting
@@ -169,7 +169,7 @@ else
 
 
   testOperationsStarting
-  source ospm.sh install $packageWithDeps
+  source ospm install $packageWithDeps
   testOperationsComplete
 
   evaluationsStarting
@@ -249,7 +249,7 @@ else
 
 
   testOperationsStarting
-  source ospm.sh install list $listName
+  source ospm install list $listName
   testOperationsComplete
 
   evaluationsStarting

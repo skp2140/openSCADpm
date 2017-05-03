@@ -100,10 +100,10 @@ if [ "$1" == help ]; then
   return
 else
   if [[ ! -z $1 ]]; then
-    source ospm.sh library save $1
+    source ospm library save $1
     libPath=$1
   else
-    libPath=$(source ospm.sh library clean)
+    libPath=$(source ospm library clean)
   fi
   slash=$(echo /)
   fullDirPathOfPackageWithoutDeps=$libPath$slash$dirOfPackageWithoutDeps
@@ -116,11 +116,11 @@ else
   if [[ -d $fullDirPathOfPackageWithoutDeps ]]; then
     rm -rf $fullDirPathOfPackageWithoutDeps
   fi
-  source ospm.sh install $packageWithoutDeps
+  source ospm install $packageWithoutDeps
   setUpComplete
 
   testOperationsStarting
-  source ospm.sh uninstall $packageWithoutDeps
+  source ospm uninstall $packageWithoutDeps
   testOperationsComplete
 
   evaluationsStarting
@@ -158,12 +158,12 @@ else
   if [[ -d $fullDirPathOfPackageWithoutDeps ]]; then
     rm -rf $fullDirPathOfPackageWithoutDeps
   fi
-  source ospm.sh install $packageWithoutDeps
+  source ospm install $packageWithoutDeps
   setUpComplete
 
   testOperationsStarting
   packageWithoutDepsArr=($packageWithoutDeps)
-  source ospm.sh uninstall ${packageWithoutDepsArr[0]} ${packageWithoutDepsArr[1]} ${packageWithoutDepsArr[2]} force
+  source ospm uninstall ${packageWithoutDepsArr[0]} ${packageWithoutDepsArr[1]} ${packageWithoutDepsArr[2]} force
   testOperationsComplete
 
   evaluationsStarting

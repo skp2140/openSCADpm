@@ -43,7 +43,7 @@ else
   echo -e "\n"
 
   echo "Test Operation(s): Starting"
-  source ospm.sh library save $1
+  source ospm library save $1
   echo "Test Operation(s): Complete"
   echo -e "\n"
 
@@ -104,14 +104,14 @@ else
   fi
 
 
-  source ospm.sh library save $1
+  source ospm library save $1
 
   echo "Setup: Complete"
   echo -e "\n"
 
   #Test operations
   echo "Test Operation(s): Starting"
-  result=$(source ospm.sh library clean)
+  result=$(source ospm library clean)
   echo "Test Operation(s): Complete"
   echo -e "\n"
 
@@ -129,7 +129,7 @@ else
   else
     echo "Evaluation A: Failed"
     echo -e "\n"
-    echo "Running ospm.sh library"
+    echo "Running ospm library"
     echo "Got: $result "
     echo "Expected: $1"
   fi
