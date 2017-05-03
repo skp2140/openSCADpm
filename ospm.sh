@@ -71,6 +71,47 @@ function help_more {
 	fi
 }
 
+function save {
+  libLoc=$(cat /usr/local/lib/ospmLibSettings)
+  $saved="saved_ospm_modules"
+  "$1 $2 $3" >> $libLoc$slash$saved
+}
+
+function unsave {
+  libLoc=$(cat /usr/local/lib/ospmLibSettings)
+  $saved="saved_ospm_modules"
+
+
+}
+
+function runinstall {
+  libLoc=$(cat /usr/local/lib/ospmLibSettings)
+	packageDir="$1-$2-$3"
+	#some safety
+	if [ ! -z $libLoc ] && [ "$libLoc" != "/" ] && [ ! -z $1 ] && [ ! -z $2 ] && [ ! -z $3 ]; then
+		#for each package check if the target package is a requirement
+		#if so it is an easy stop (show all for ease) with little processing
+
+		beingUsed=false
+		echo "dollar four is $4"
+		if [[ $4 != "force" ]]; then
+			for d in $( ls -d $libLoc$slash*/ ) ; do #this wont work :(
+				if grep -Fxq "$1 $2 $3" $d$deps
+				then
+					echo "$1 $2 $3 is being used in $d"
+					beingUsed=true
+				fi
+			done
+		fi
+
+		if [[ $beingUsed = true ]]; then
+	     echo "cannot unistall $1 $2 $3 as it is being used."
+    else
+      echo "asdf"
+		fi
+  fi
+}
+
 function uninstall {
 	libLoc=$(cat /usr/local/lib/ospmLibSettings)
 	packageDir="$1-$2-$3"
@@ -101,9 +142,6 @@ function uninstall {
 				    echo "Ok, won't uninstall then."
 				fi
 		fi
-
-
-		rm -rf $libLoc$slash$packageDir
 
 	fi
 }
@@ -158,10 +196,12 @@ function install {
 			fi
 
 				#required by file
+        echo "required by! $4-$5-$6"
 				requiredBy="requiredBy"
-				requiredByFile=$saveLoc$slash$requiredBy
-				if [ ! -z "$4" ] && [ ! -z "$5" ] && [ ! -z "$6" ] && ( ! grep -Fxq "$saveLoc$slash$4-$5-$6" $requiredByFile ); then
-					 echo "$4 $5 $6" >> $requiredByFile
+				requiredByFile=$libLoc$slash$1-$2-$3$slash$requiredBy
+        echo $requiredByFile
+				if [ ! -z "$4" ] && [ ! -z "$5" ] && [ ! -z "$6" ] && ( ! grep -Fxq "$4 $5 $6" $requiredByFile ); then
+           echo "$4 $5 $6" >> $requiredByFile
 				fi
 
 				if [ -f "$saveLoc$slash$deps" ]; then
@@ -169,8 +209,13 @@ function install {
 						printf "${YELLOW}$dep\n${NC}"
 						dep_dir=$libLoc$slash$dep
 						if [ ! -z "$dep" ] && [ "$dep" != "\n" ]; then
-							depArr=($dep)
-							source ospm.sh install ${dep[0]} ${dep[1]} ${dep[2]} $1 $2 $3
+
+              depArr=($dep)
+              echo "install dep $dep for $1 $2 $3"
+              a="${dep[0]}"
+              b="${dep[1]}"
+              c="${dep[2]}"
+							source ospm.sh install "$dep $1 $2 $3"
 						fi
 					done <$saveLoc$slash$deps
 				fi
