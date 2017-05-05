@@ -72,7 +72,7 @@ function help_more {
 					printf "${YELLOW}uninstall <author> <package name> <version>     Uninstall package(s)\n${NC}"
 					;;
 		*)
-	        	printf "${RED}command not found\n${NC}";
+	        	printf "${RED}-ospm: $@ command not found\n${NC}";
 		esac
 	else
 		help
@@ -176,7 +176,7 @@ function parse {
       c=${BASH_REMATCH[3]}
       echo $a $b $c
       if [ $1 == "install" ]; then
-          source ospm.sh install $a $b $c
+          source ospm install $a $b $c
       fi
       if [ $1 == "save" ]; then
         if ! grep -Fxq "$a $b $c" $3 ; then
@@ -198,7 +198,7 @@ function install {
 					printf "${GREEN}Installing dependency: $dep\n${NC}"
 					dep_dir=$libLoc$slash$dep
 					if [ ! -z "$dep" ] && [ "$dep" != "\n" ]; then
-						source ospm.sh install $dep
+						source ospm install $dep
 					fi
 				done <$2
 			fi
@@ -232,7 +232,7 @@ function install {
               a="${dep[0]}"
               b="${dep[1]}"
               c="${dep[2]}"
-							source ospm.sh install "$dep $1 $2 $3"
+							source ospm install "$dep $1 $2 $3"
 						fi
 					done <$saveLoc$slash$deps
 				fi
@@ -273,5 +273,5 @@ case "$1" in
 	;;
 
 	*)
-	printf "${RED}command not found\n${NC}";
+	printf "${RED}-ospm: $@ command not found\n${NC}";
 esac

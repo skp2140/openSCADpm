@@ -1,3 +1,4 @@
+#!/bin/bash
 list="installTestsList"
 packageWithDeps="brennangw ospm_hello 0.4"
 dirOfPackageWithDeps="brennangw-ospm_hello-0.4"
@@ -101,10 +102,10 @@ if [ "$1" == help ]; then
   return
 else
   if [[ ! -z $1 ]]; then
-    source ospm.sh library save $1
+    source ospm library save $1
     libPath=$1
   else
-    libPath=$(source ospm.sh library clean)
+    libPath=$(source ospm library clean)
   fi
   slash=$(echo /)
   fullDirPathOfPackageWithoutDeps=$libPath$slash$dirOfPackageWithoutDeps
@@ -120,7 +121,7 @@ else
   setUpComplete
 
   testOperationsStarting
-  source ospm.sh parse save $parseTestTarget $parseTestDest
+  source ospm parse save $parseTestTarget $parseTestDest
   testOperationsComplete
 
   evaluationsStarting

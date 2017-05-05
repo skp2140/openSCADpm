@@ -1,3 +1,4 @@
+#!/bin/bash
 list="versionlTestsList"
 packageWithDeps="brennangw ospm_hello 0.4"
 dirOfPackageWithDeps="brennangw-ospm_hello-0.4"
@@ -99,7 +100,7 @@ if [ "$1" == help ] || [ "$1" == install ] || [ "$1" == uninstall ] || [ "$1" ==
   return
 else
   if [ "$1" == version ]; then # when the first variable is not empty
-    print_output=$(source ospm.sh version)
+    print_output=$(source ospm version)
     print_output=$(cat $print_output)
     echo $print_output
   else

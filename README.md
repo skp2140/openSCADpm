@@ -1,14 +1,136 @@
-# openSCADpm
+# OpenSCADpm
 
-Access the Project's Website at:
+Package Managers have become powerful tools that assist software engineers during their development process. 
+We found that there are no package managers for OpenSCAD Language, a language used for computer assisted 
+designing. Thus, we intend to create a package manager for OpenSCAD, akin to Node Package Manager (NPM) or 
+Ruby Gems, which will allow developers to more easily share and install modules. Furthermore, it will allow 
+users to manage dependencies. 
 
-https://skp2140.github.io/openSCADpm/
+To this end we want to create a command line tool and a website. The command line tool will be used for the 
+installation and managing of modules by allowing users to use terminal commands. The website will allow users 
+to upload packages. It will also serve as a way for packages to be browsed and explained with a high level 
+description (this seems to be the norm for package managers).
+
+## Synopsis
+The Installation section is just enough infor to get you up and running. 
+Much more informaiton available in the Usage section and the documentation file we have in this repo.
+
+## OpenSCADpm Installation
+** This version of OpenSCADpm is only for Macs and Linux/Unix **
+
+1. Install the lastest version of OpenSCADpm by visiting the website below and click the "DOWNLOAD OPENSCADPM" link.
+
+```sh
+https://skp2140.github.io/openSCADpm/index.html
+```
+
+2. Unzip the zip.file downloaded from the given website link above.
+
+3. Change the name of the opened folder from "openSCADpm-master" to "ospm."
+
+4. Open terminal, go to **the folder that contains "ospm" folder **, and enter the following command
+```sh
+mv ospm /usr/local/lib/
+```
+This command will move the ospm folder to the location /usr/local/lib/ folder, which allows the users 
+to used ospm from anywhere in the system without restriction. 
+
+## OpenSCADpm Package Installation and Usage
+
+There are two approaches to use ospm for package installing, uninstalling and other options: User 
+Script Approach and Package Name Approach. 
+
+### User Script Approach
+You can create a user script (txt file recommended) that contains the dependencies of packages for 
+OpenSCAD packages. 
+
+You can read the content of that txt file by th command below.
+```sh
+cat myList.txt
+```
+In the txt file, each row should provide the information for the needed package. The first element 
+should be the author name, the second element should be the package name, and the last element 
+should be the package version number. Furthermore, in this example, since ospm_hello depends on 
+echo function, so the information for ospm_hello is one row above the information for echo. 
+
+```sh
+<author name> <package name> <package version number>
+brennangw ospm_hello 0.4
+brennangw echo 0.1
+```
+
+Once you have the user script ready, type the following command in the terminal, inside the folder
+that contains the myList.txt.
+
+```sh
+ospm install list myList.txt
+```
+
+This command will help you to download what's specified in txt file. 
+
+
+### Package Name Approach
+
+You can also download package by using the command below.
+```sh
+ospm install <author name> <package name> <package version number>
+ospm install brennangw ospm_hello 0.4
+```
+This sample command will install ospm_hello v0.4 in your computer. 
+
+
+### More Commands
+
+Uninstall
+```sh
+ospm uninstall <author name> <package name> <package version number>
+ospm uninstall brennangw ospm_hello 0.4
+```
+The command above will allow you to uninstall the package you do not want. 
+
+
+Library
+```sh
+ospm library <show>
+ospm library <save> <path>
+```
+"ospm library show" shows library path, while "ospm library save <path>" save the library path.
+
+
+Version
+```sh
+ospm version
+```
+This command shows the version information about the ospm installed in the system. 
+
+Help
+```sh
+ospm help
+```
+This command shows command line options, the corresponding explanations and usages. 
 
 
 
-TODO: Write a project description
+## Contributing
+If you would like to contrbute to this ospm, 
 
-This is a package manager (like NPM or Ruby Gems) for the [OpenScad Language](http://www.openscad.org/).
+1. Fork it!
+2. Create your feature branch: 
+`git checkout -b my-new-feature`
+3. Commit your changes: 
+`git commit -am 'Add some feature'`
+4. Push to the branch: 
+`git push origin my-new-feature`
+5. Submit a pull request :D
 
-The [wiki](https://github.com/skp2140/openSCADpm/wiki) has much more info.
-As does the [website](https://skp2140.github.io/openSCADpm/).
+
+## Credits
+
+Thank for all the hardwork we have done in the TSE Team, which include Jiaxin Su, Brennan Wallace,
+and Stan Pecency. Also, thank Prof. Kaiser from Columbia University provided us with precious suggestions about 
+how to better develop this package manager tool for OpenSCAD.
+
+
+## License
+MIT Open Source License. 
+Attached in this GITHUB repo. 
