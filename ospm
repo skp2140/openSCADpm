@@ -212,7 +212,6 @@ function install {
 			if [ $3 == "latest" ]; then 
 				ver=$(curl https://api.github.com/repos/brennangw/ospm_hello/releases |  sed '8q;d' | cut -d "\""   -f4)
 			fi
-			3=$ver
 			saveLoc=$libLoc$slash$1-$2-$ver
 			if [ ! -d "$saveLoc" ]; then
 				git clone -b $ver  --single-branch --depth 1 https://github.com/$1/$2 $saveLoc &> /dev/null
