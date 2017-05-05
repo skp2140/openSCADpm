@@ -72,7 +72,7 @@ function help_more {
 					printf "${YELLOW}uninstall <author> <package name> <version>     Uninstall package(s)\n${NC}"
 					;;
 		*)
-	        	printf "${RED}command not found\n${NC}";
+	        	printf "${RED}-ospm: $@ command not found\n${NC}";
 		esac
 	else
 		help
@@ -273,5 +273,5 @@ case "$1" in
 	;;
 
 	*)
-	printf "${RED}command not found\n${NC}";
+	printf "${RED}-ospm: $@ command not found\n${NC}";
 esac
