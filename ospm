@@ -280,5 +280,5 @@ case "$1" in
 	;;
 
 	*)
-	printf "${RED}-ospm: $@ command not found\n${NC}";
+	printf "${RED}-ospm: $@ : command not found\n${NC}";
 esac
