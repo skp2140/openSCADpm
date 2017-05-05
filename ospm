@@ -213,18 +213,18 @@ function install {
 				ver=$(curl https://api.github.com/repos/brennangw/ospm_hello/releases |  sed '8q;d' | cut -d "\""   -f4)
 			fi
 			3=$ver
-			saveLoc=$libLoc$slash$1-$2-$3
+			saveLoc=$libLoc$slash$1-$2-$ver
 			if [ ! -d "$saveLoc" ]; then
 				git clone -b $ver  --single-branch --depth 1 https://github.com/$1/$2 $saveLoc &> /dev/null
-				 echo "$1 $2 $3 installed"
+				 echo "$1 $2 $ver installed"
 				# git clone https://github.com/$1/$2.git $saveLoc
 			else
-				printf "${GREEN}$1-$2-$3 already installed\n${NC}"
+				printf "${GREEN}$1-$2-$ver already installed\n${NC}"
 			fi
 
 				#required by file
 				requiredBy="requiredBy"
-				requiredByFile=$libLoc$slash$1-$2-$3$slash$requiredBy
+				requiredByFile=$libLoc$slash$1-$2-$ver$slash$requiredBy
 				if [ ! -z "$4" ] && [ ! -z "$5" ] && [ ! -z "$6" ] && ( ! grep -Fxq "$4 $5 $6" $requiredByFile ); then
            echo "$4 $5 $6" >> $requiredByFile
         else
