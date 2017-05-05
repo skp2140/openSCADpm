@@ -151,14 +151,16 @@ function uninstall {
 			echo -n "Proceed with uninstall (y/n)? "
 				read answer
 				if echo "$answer" | grep -iq "^y" ; then
-            removeRequiredBy $1 $2 $3
+                                    removeRequiredBy $1 $2 $3
 				    rm -rf $libLoc$slash$packageDir
+				    echo "$1 $2 $3 uninstalled"
 				else
 				    echo "Ok, will not uninstall then."
 				fi
     else
       removeRequiredBy $1 $2 $3
       rm -rf $libLoc$slash$packageDir
+      echo "$1 $2 $3 uninstalled"
     fi
 
 	fi
@@ -212,7 +214,8 @@ function install {
 				if [ $3 == "latest" ]; then 
 					ver=$(curl https://api.github.com/repos/brennangw/ospm_hello/releases |  sed '8q;d' | cut -d "\""   -f4)
 				fi
-				git clone -b $ver  --single-branch --depth 1 https://github.com/$1/$2 $saveLoc
+				git clone -b $ver  --single-branch --depth 1 https://github.com/$1/$2 $saveLoc &> /dev/null
+				 echo "$1 $2 $3 installed"
 				# git clone https://github.com/$1/$2.git $saveLoc
 			else
 				printf "${GREEN}$1-$2-$3 already installed\n${NC}"
