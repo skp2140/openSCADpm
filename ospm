@@ -208,7 +208,11 @@ function install {
 			underscore_ospm=$(echo "_ospm")
 			saveLoc=$libLoc$slash$1-$2-$3
 			if [ ! -d "$saveLoc" ]; then
-				git clone -b $3  --single-branch --depth 1 https://github.com/$1/$2 $saveLoc
+				ver=$3
+				if [ $3 == "latest" ]; then 
+					ver=$(curl https://api.github.com/repos/brennangw/ospm_hello/releases |  sed '8q;d' | cut -d "\""   -f4)
+				fi
+				git clone -b $ver  --single-branch --depth 1 https://github.com/$1/$2 $saveLoc
 				# git clone https://github.com/$1/$2.git $saveLoc
 			else
 				printf "${GREEN}$1-$2-$3 already installed\n${NC}"
