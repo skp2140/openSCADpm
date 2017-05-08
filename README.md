@@ -31,10 +31,11 @@ https://skp2140.github.io/openSCADpm/index.html
 
 3. Open terminal, go to **the folder that contains the "ospm" file **, and enter the following command
 ```sh
+chmod +x ospm
 mv ospm /usr/local/bin/
 ```
-This command will move the ospm folder to the location /usr/local/bin/ folder, which allows the users 
-to used ospm from anywhere in the system without restriction. 
+The “chmod” command will make the ospm file an executable and the second command will move the ospm folder to the location /usr/local/bin/ folder, which allows the users to use ospm from anywhere in the system without restriction.
+
 
 4. Use the documentation below to find the path to the ospm libaray in your system.
 ```sh
@@ -91,6 +92,13 @@ ospm install <author name> <package name> <package version number>
 ospm install brennangw ospm_hello 0.4
 ```
 This sample command will install ospm_hello v0.4 in your computer. 
+
+if you want to download the package with the latest version, you can 
+```sh
+ospm install <author name> <package name> latest
+ospm install brennangw ospm_hello latest
+```
+The command above will download the package with the latest version for you. 
 
 
 ### More Commands
